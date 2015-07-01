@@ -5,6 +5,8 @@ use Silex\Application;
 use OpenBible\Controllers\BibleController;
 use Silex\Provider;
 
+require 'DBConfig.php';
+
 class OpenBible extends Application{
 	
 	private $controller;
@@ -96,22 +98,8 @@ class OpenBible extends Application{
 	private function initDb(){
 		$this->register(new Provider\DoctrineServiceProvider(), array(
 				'dbs.options' => array (
-						'mysql_read' => array(
-							'driver'    => 'pdo_mysql',
-							'host'      => 'localhost',
-							'dbname'    => '',
-							'user'      => '',
-							'password'  => '',
-							'charset' 	=> 'UTF8'
-						),
-						'mysql_write' => array(
-							'driver'    => 'pdo_mysql',
-							'host'      => 'localhost',
-							'dbname'    => 'root_obp',
-							'user'      => '',
-							'password'  => '',
-							'charset' 	=> 'UTF8'
-						),
+					'mysql_read' => DBConfig::getArray(),
+					'mysql_write' => DBConfig::getArray()
 				),
 		));
 	}
