@@ -1,0 +1,347 @@
+@font-face {
+    font-family: Mission Gothic;
+    src: url("/style/Mission-Gothic-Light.otf");
+}
+
+/**
+*	Common style
+**/
+*{
+	padding: 0px;
+	margin: 0px;
+	color: #666;
+	font-family: Mission Gothic;
+}
+body,html{
+	overflow:hidden;
+}
+.switch{
+	height: 33px;
+	width: 33px;
+	padding-top: 14px;
+	padding-left: 5px;
+}
+.spacier{
+	height: calc(100% - 33px) !important;
+}
+
+/**
+*	Header style
+**/
+header{
+	background-color: #68bcb6!important;
+	width:100%;
+	height: 170px;
+	position: relative;
+}
+#your_bible{
+	color:#efefef;
+	font-size:45px;
+	line-height: 170px;
+	vertical-align: middle;
+	margin-left: 50px;
+	float: left;
+}
+	#your_bible span{
+		color: grey;
+	}
+#read_on{
+	color:#efefef;
+	font-size:25px;
+	line-height: 170px;
+	vertical-align: middle;
+	margin-right: 50px;
+	float: right;
+}
+	#read_on #pointer{
+		color:#efefef;
+		font-size:40px;
+		line-height: 220px;
+		vertical-align: middle;
+		margin-right: 50px;
+		float: right;
+	}
+	
+/**
+*	Toolbar style
+**/
+.toolbar{
+	height: 44px;
+	width: 100%;
+	background-color: #494949;
+}
+	.toolbar #sidebar_tabs{
+		float: left;
+		width: 220px;
+	}
+		#sidebar_tabs ul{			
+			list-style: none;
+		}
+		#sidebar_tabs ul li, #options_toggler, #account_toggler{
+			float: left;
+			width: 44px;
+			height: 44px;
+			line-height: 50px;
+			color:#efefef;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 30px;
+			cursor: pointer;	
+		}
+		#sidebar_tabs ul li:not(.active):not(.no-hover):hover{
+			background:#505050;
+		}
+		#sidebar_tabs ul li.active{
+			background: #828282;
+		}		
+		.sidebar_toggle img, 
+		#options_toggler img{
+			height: 22px;
+			margin-top: 11px;
+		}
+	.toolbar #options_toggler, 
+	.toolbar #account_toggler{
+		float: right;
+	}
+	.toolbar #options_toggler:hover,
+	.toolbar #account_toggler:hover{
+		background:#505050;
+	}
+	
+	.toolbar #account_toggler{
+		font-size: 21px;
+	  	line-height: 43px;
+	  	width: 115px;
+	  	color: #e2e2e2;
+	}
+	.toolbar #account_toggler span{
+		color: #68bcb6;
+	}
+/**
+*	Bible style
+**/
+.bible{
+	width: 100%;
+	height: calc(100% - 270px);
+	overflow: auto;
+	position: relative;
+}
+.bible.space-left{
+	width: calc(100% - 207px);
+	margin-left: 207px;
+}
+	.bible .search{}
+		.search input#search{
+			margin-top: 66px;
+			margin-bottom: 27px;
+			border: none;
+			font-size: 22px;
+			font-weight: bold;
+			background: white;
+			border-bottom: 2px solid #ccc;
+			height: 35px;
+			width: 150px;
+			padding: 10px;
+		}
+		.search input#search:focus{
+			outline:none;
+		}
+	.bible .scripture_container{		
+		width: 50%;
+		margin: auto;
+		padding-bottom: 30px;
+	}
+	.bible .row.scripture_container{
+		max-width: 600px;
+	}
+	.bible .scripture_container h3{
+		font-size: 20px;
+		font-weight: bold;
+		margin-top: 0px;
+	}
+	.bible .scripture_container h4{
+		padding-left: 10px;
+		margin-left: 5px;
+		font-style: italic;
+	}
+	.bible ul.chapter{
+		list-style:none;
+		border-left: rgba(104,188,182,0.2) solid 1px;
+		padding-left: 10px;
+		margin-left: 5px;
+		font-size: 16px;
+	}
+	.scripture-col-12,.scripture-col-6,
+	.scripture-col-4,.scripture-col-3{
+		float: left;
+	}
+	.scripture-col-12{
+		width: calc(100% - 5px);
+	}
+	.scripture-col-6{
+		width: calc(50% - 5px);
+	}
+	.scripture-col-4{
+		width: calc(33.33333333% - 5px);
+	}
+	.scripture-col-3{
+		width: calc(308px - 5px);
+	}
+	.bible .prev-chap,
+	.bible .next-chap{
+		font-size: 19px;
+	}
+/**
+*	Sidebar style
+**/
+.sidebar-left{	
+	background: #828282;
+	width: 207px;
+	overflow-y: auto;
+	display: none;
+	position:absolute;
+	z-index: 999;	
+	height: calc(100% - 206px);
+}
+	.sidebar-left section{
+		display: none;
+	}
+	.sidebar-left section.active{
+		display: block;
+	}
+	.sidebar-left #side_versions,
+	.sidebar-left #side_functions{
+		padding-left:20px;
+	}
+	.sidebar-left ul{
+		list-style: none;
+	}
+	.sidebar-left h4{
+		color: #b2b2b2;
+		font-size: 25px;
+		font-style: italic;
+	}
+	.sidebar-left #side_books h4{
+		padding-left: 15px;
+	}
+	.sidebar-left .item{
+		color: #e2e2e2;
+		cursor: pointer;
+		font-size: 15px;  
+		padding-top: 5px;
+	}
+		.sidebar-left .item.book{
+			padding: 5px 0 5px 20px;
+		}
+		.sidebar-left .item.book:hover,
+		.sidebar-left .item.book.active{
+			background:#505050;
+		}
+			.book .chapters{			
+			  display: none;
+			}
+			.book .chapter {
+			  float: left;
+			  width: 20px;
+			  height: 20px;
+			  text-align: center;
+			  margin: 2px;
+			}
+			.book .chapter.active,
+			.book .chapter:hover{
+				background: rgba(0,0,0,0.2);
+			}
+				.verse .nr{
+				  	font-size: 14px;
+					color: #68bcb6;
+				}
+	.sidebar-left .item *{		
+		color: #e2e2e2;
+	}
+	
+.sidebar-right{
+	background: #828282;
+	width: 207px;
+	overflow-y: auto;
+	display: none;
+	position:absolute;
+	z-index: 999;
+	right: 0px;
+	min-height: 5px;
+}
+	.sidebar-right #account,
+	.sidebar-right #options{
+		display:none;
+	}
+	.sidebar-right #account.active,
+	.sidebar-right #options.active{
+		display: block;
+	}
+	.sidebar-right #account .login-form{
+		padding:20px;
+	}
+	.sidebar-right #account .login-form input{
+		width: 100%;
+		margin-bottom: 20px;
+		border:none;
+		padding: 3px;
+	}
+	#register_link{
+		color:#68bcb6;
+		cursor:pointer;
+	}
+
+@media (max-width: 980px){
+	/** Toolbar **/
+	.toolbar{
+		height: 94px;
+	}
+		.toolbar #sidebar_tabs{
+			width: 380px;
+		}
+			#sidebar_tabs ul{			
+				list-style: none;
+			}
+			#sidebar_tabs ul li, #options_toggler, #account_toggler{
+				width: 94px;
+				height: 94px;
+				line-height: 100px;	
+			}
+			.sidebar_toggle img, #options_toggler img{
+				height: 60px;
+				margin-top: 17px;
+			}
+		.toolbar #account_toggler{
+			line-height: 93px;
+		}
+		.toolbar #account_toggler{
+			font-size: 45px;
+			width: 210px;
+		}
+
+	/** Switch **/
+	.switch{
+		width: 94px;
+		height: 94px;  
+		padding-top: 26px;
+	}
+	input.cmn-toggle-round + label{
+		width: 90px;
+		height: 40px;
+	}	
+	input.cmn-toggle-round + label:after{
+		width: 40px;
+	}
+	
+	/** Bible **/
+	.bible .scripture_container{
+		width: 100%;
+		padding: 0 10px;
+	}
+	.bible .row.scripture_container{
+		max-width: none;
+	}
+	.spacier{
+		 height: calc(100% - 94px) !important;
+	}
+}

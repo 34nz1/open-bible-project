@@ -1,0 +1,44 @@
+{% include 'head.twig' %}
+<div class="bible spacier">
+	{% if texts is defined %}
+		{% set colxs = (12/texts|length)|round < 3 ? 3 : (12/texts|length)|round %}
+		{% if texts|length > 2 %}
+			<div class="scripture_container" id='drag-scroll' style="width:{{ texts|length * 313}}px;">
+		{% else %}
+			<div class="row scripture_container">
+		{% endif %}
+		<div class="search">
+			{% set searchwidth = (search|length*12)+27 %}
+			<input id="search" type="text" placeholder="Johannes 1:1-13" value="{{ search }}" style="width:{{ searchwidth }}px">
+		</div>
+		{% for bible in texts %}
+			<h4 class='scripture-col-{{ colxs }}'>{{ bible.Abbr }}</h4>			
+		{% endfor %}
+		<br style="clear:both;">
+		{% for bible in texts %}
+		{% for book in bible.Books %}
+			{% for Chapter in book.Chapters %}			
+				{% if((book.Chapters|length > 1) or (bible.Books|length > 1)) %}
+					<h3>{{ book.Names['dutch'] }} {{ Chapter.Id }}</h3>
+				{% endif %}
+				<ul class="chapter scripture-col-{{ colxs }}" id="{{ Chapter.Id }}">
+					{% for Verse in Chapter.Verses %}
+						{% if Chapter.Sections[Verse.Id] is defined %}
+						<li class="section_title">
+							<h3>{{ Chapter.Sections[Verse.Id].Title }}</h3>
+						</li>
+						{% endif %}
+						<li value="{{ Verse.Number }}" class="verse" id="{{ Verse.Id }}">
+							<span class="nr">{{ Verse.Number}}</span> {{ Verse.Text|raw }}
+						</li>	
+					{% endfor %}
+				</ul>
+				<a href="/{{ book.Names['dutch'] }}/{{ Chapter.Id - 1  }}" class="pull-left prev-chap">< {{ Chapter.Id - 1  }}</a>
+				<a href="/{{ book.Names['dutch'] }}/{{ Chapter.Id + 1 }}" class="pull-right next-chap">{{ Chapter.Id + 1 }} ></a>
+			{% endfor %}
+		{% endfor %}
+		{% endfor %}
+	</div>	
+	{% endif %}
+</div>
+{% include 'foot.twig' %}

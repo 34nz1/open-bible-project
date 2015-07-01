@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<base href="{{ base_url }}">
+		<title>Jouw Bijbel | {{ search }}</title>
+		<link rel='favicon' href='favicon.ico'>
+		<link rel='stylesheet' href='style/bootstrap.min.css' />
+		<link rel='stylesheet' href='style/switch.css' type='text/css'>
+		<link rel='stylesheet' href='style/checkbox.css' type='text/css'>
+		<link rel='stylesheet' href='style/ajaxloader.css' type='text/css'>
+		<link rel='stylesheet' href='style/style.css' type='text/css'>
+	</head>
+	<body>
+	<div class="ajax-loader">
+		<div class="loader-pulse"></div>
+		<div class="loader-pulse"></div>
+		<div class="loader-pulse"></div>
+		<div class="loader-pulse"></div>
+	</div>
+	<header style="display:none;">
+		<div id="your_bible">
+		{% if app.user %}
+			Bijbel van <span>{{ app.user.displayName }}</span>
+		{% else %}
+			<span>Mijn</span> Bijbel
+		{% endif %}
+		</div>
+		<div id="read_on">
+			>> verder lezen...
+		</div>
+	</header>
+	<div class="toolbar">
+		<div id="sidebar_tabs">
+			<ul>
+				<li class="sidebar_toggle" id="side_versions">
+					<img src="img/versions.png">
+				</li>
+				<li class="sidebar_toggle" id="side_books">
+					<img src="img/books.png">
+				</li>				
+				<li class="sidebar_toggle" id="side_functions">
+					<img src="img/plus.png">
+				</li>
+				<li class="no-hover">
+					<div class="switch">
+			            <input id="toggle_header" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			            <label for="toggle_header"></label>
+			        </div>
+				</li>
+			</ul>
+		</div>
+		<div id="options_toggler">
+			<img src="img/gear.png">
+		</div>
+		<div id="account_toggler">		
+			{% if app.user %}
+			Bijbel van <span>{{ app.user.displayName }}</span>
+			{% else %}
+			<span>Mijn</span> Bijbel
+			{% endif %}
+		</div>
+	</div>
+	<div class="sidebar-left spacier" id="sidebar-right">
+		<section id="side_books">
+			<h4>Boeken</h4>
+			<ul>
+			{% for Book in books %}			 
+				<li class="item book {{ Book.Active ? 'active' : '' }}" id="{{ Book.Id }}">
+					<input type='hidden' id='json_{{ Book.Abbr }}' value='{{ Book|json_encode() }}'>
+					{{ Book.Names.dutch }}<br class="chapters"  {{ Book.Active ? 'style="display:inline-block;"' : '' }}>
+					<ul class="chapters" {{ Book.Active ? 'style="display:inline-block;"' : '' }}>
+					{% for i in 1..Book.ChapterCount %}
+						<li class="chapter {{ Book.Active and i == rqchapter ? 'active' : '' }}">{{ i }}</li>
+					{% endfor %}
+					</ul>
+					<br>
+				</li>
+			{% endfor %}
+			</ul>
+		</section>
+		<section id="side_versions">
+			<h4>Nederlands</h4>
+			<ul>
+			{% for Bible in versions %}
+				{% if Bible.Lang == 'dutch' %}		 
+					<li class="item version" id="{{ Bible.Id }}">
+					  	<div class="cbox">
+					  		<input type="checkbox" value="1" id="version_{{ Bible.Id }}" {% if Bible.Active %}checked{% endif %}/>
+						  	<label for="version_{{ Bible.Id }}"></label>
+						  	<span style="margin-left:10px">{{ Bible.Name|length > 24 ? Bible.Name|slice(0, 21) ~ '...' : Bible.Name  }}</span>			  	
+						</div>
+					</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+			<h4>Engels</h4>
+			<ul>
+			{% for Bible in versions %}
+				{% if Bible.Lang == 'english' %}		 
+					<li class="item version" id="{{ Bible.Id }}">
+					  	<div class="cbox">
+					  		<input type="checkbox" value="1" id="version_{{ Bible.Id }}" {% if Bible.Active %}checked{% endif %}/>
+						  	<label for="version_{{ Bible.Id }}"></label>
+						  	<span style="margin-left:10px">{{ Bible.Name|length > 24 ? Bible.Name|slice(0, 21) ~ '...' : Bible.Name }}</span>			  	
+						</div>
+					</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</section>
+		<section id="side_functions">
+			<h4>Functieknoppen</h4>
+		</section>
+	</div>
+	<div class="sidebar-right">
+		<section id="account">
+			<form class="login-form">
+				<input type="text" id="username" placeholder="Gebruikersnaam">
+				<input type="password" id="password" placeholder="Wachtwoord">
+				<input type="submit" value="Inloggen">
+				<a href="{{ base_url }}user/register" target="_blank" id="register_link">Registreren</a>
+			</form>
+		</section>
+		<section id="options"></section>
+	</div>
