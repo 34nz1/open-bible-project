@@ -1,6 +1,3 @@
-Open Bible Project
-==================
-
 ## Gods Woord voor Iedereen (Dutch)
 *Een kostbaar bezit*
 
