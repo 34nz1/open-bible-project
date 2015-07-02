@@ -81,7 +81,7 @@
 			<h4>Nederlands</h4>
 			<ul>
 			{% for Bible in versions %}
-				{% if Bible.Lang == 'dutch' %}		 
+				{% if Bible.Lang == 'dutch' and Bible.Id != 8 %}		 
 					<li class="item version" id="{{ Bible.Id }}">
 					  	<div class="cbox">
 					  		<input type="checkbox" value="1" id="version_{{ Bible.Id }}" {% if Bible.Active %}checked{% endif %}/>

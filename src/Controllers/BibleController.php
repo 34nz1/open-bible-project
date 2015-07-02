@@ -30,7 +30,7 @@ class BibleController extends Controller{
 		}elseif(!empty($versions)){
 			$this->versions = $versions;
 		}else{
-			$this->versions = array(8);
+			$this->versions = array(9);
 		}
 		$app['session']->set('versions', $this->versions);
 				

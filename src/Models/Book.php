@@ -108,6 +108,6 @@ class Book{
 	 * @param Var Description
 	 */
 	public function CountChapters(){
-		$this->ChapterCount = $this->app['db']->fetchColumn("SELECT MAX(c) FROM t_hsv WHERE b=".$this->Id);
+		$this->ChapterCount = $this->app['db']->fetchColumn("SELECT MAX(c) FROM t_sv WHERE b=".$this->Id);
 	}
 }

@@ -4,7 +4,7 @@ namespace OpenBible\Models;
 use OpenBible\Utilities;
 class Bible{
 	
-	public $Id;
+	public $Id = 9;
 	public $Table;
 	public $Abbr;
 	public $Lang;
@@ -18,9 +18,11 @@ class Bible{
 	public $Active;
 	private $app;
 	
-	public function __construct($app, $id = 8){
+	public function __construct($app, $id = null){
 		$this->app = $app;
-		$this->Id = $id;
+		
+		if($id != null)
+			$this->Id = $id;
 	}
 	
 	/**
@@ -28,7 +30,7 @@ class Bible{
 	 * @param Var Description
 	 */
 	public function load(){
-		$id = $this->Id ? $this->Id : 8;
+		$id = $this->Id;
 		$query = "SELECT * FROM bible_version_key WHERE id=".$id;
 		$rversion = $this->app['db']->fetchAssoc($query);
 		if($rversion){
@@ -94,7 +96,7 @@ class Bible{
 					'english'=>$rbook['english'],
 					'dutch'=>$rbook['dutch']
 			);
-			$b->ChapterCount = $app['db']->fetchColumn("SELECT MAX(c) FROM t_hsv WHERE b=".$rbook['b']);
+			$b->ChapterCount = $app['db']->fetchColumn("SELECT MAX(c) FROM t_sv WHERE b=".$rbook['b']);
 			
 			if(isset($bible)){
 				if(array_key_exists($b->Id, $bible->Books)){
