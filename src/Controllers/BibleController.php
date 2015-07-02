@@ -15,6 +15,10 @@ class BibleController extends Controller{
 	public $versions;
 	public $response;
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function __construct($app){
 		//Assign Application
 		$this->app = $app;
@@ -26,7 +30,7 @@ class BibleController extends Controller{
 		}elseif(!empty($versions)){
 			$this->versions = $versions;
 		}else{
-			$this->versions = array(8);
+			$this->versions = array(9);
 		}
 		$app['session']->set('versions', $this->versions);
 				
@@ -34,10 +38,18 @@ class BibleController extends Controller{
 		$this->response = new Response($app);
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function index(){
 		return $this->byBook(1);
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function bySearch($query){
 		$this->search = $query;
 		
@@ -78,10 +90,18 @@ class BibleController extends Controller{
 		));
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function byBook($book){
 		return $this->byBookChapter($book, 1);
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function byBookChapter($rqbook, $rqchapter){
 		$texts = array();
 		
@@ -118,6 +138,10 @@ class BibleController extends Controller{
 		
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function response(){
 		return $this->response->get();
 	}

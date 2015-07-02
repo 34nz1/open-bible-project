@@ -54,6 +54,10 @@ class Response{
 			$this->vars = $vars;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function get(){
 		if($this->async){
 			$vars = $this->vars;
