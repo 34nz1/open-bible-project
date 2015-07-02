@@ -1,8 +1,7 @@
 <?php
 namespace OpenBible\Models;
 
-class Section{
-	
+class Section{	
 	public $Id;
 	public $Title;
 	public $StartVerse;

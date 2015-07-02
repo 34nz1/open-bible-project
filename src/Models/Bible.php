@@ -23,6 +23,10 @@ class Bible{
 		$this->Id = $id;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function load(){
 		$id = $this->Id ? $this->Id : 8;
 		$query = "SELECT * FROM bible_version_key WHERE id=".$id;
@@ -41,9 +45,12 @@ class Bible{
 		}else{
 			show_error("Deze versie bestaat niet.");
 		}
-
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public static function getBook($app, $book, $bible = null){
 		$query = "SELECT * FROM books WHERE 1=1";
 		if(is_numeric($book)){
@@ -71,6 +78,10 @@ class Bible{
 		}
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public static function getAllBooks($app, $bible = null){
 		$books = array();
 		$query = "SELECT * FROM books";
@@ -95,6 +106,10 @@ class Bible{
 		return $books;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function get($book, $chapter, $verses = null){
 		$book = Bible::getBook($this->app, $book, $this);
 		$book->Active = true;
@@ -102,6 +117,10 @@ class Bible{
 		$this->Books[$book->Id] = $book;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public static function getVersions($app, $active){
 		$query = "SELECT * FROM bible_version_key";
 		$result = $app['db']->fetchAll($query);	
@@ -126,6 +145,10 @@ class Bible{
 		return $versions;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function searchByWord($query){
 		$from = " t_".$this->Table;
 		$where = " WHERE ";

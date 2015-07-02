@@ -11,6 +11,10 @@ class OpenBible extends Application{
 	
 	private $controller;
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function initialize(){
 		$this->initSessions();
 		$this->initRoutes();
@@ -20,6 +24,10 @@ class OpenBible extends Application{
 		$this->run();
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	private function initSessions(){
 		//Register Security Provider
 		$this->register(new Provider\SecurityServiceProvider());
@@ -63,6 +71,10 @@ class OpenBible extends Application{
 		$this->mount('/user', $userProvider);
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	private function initRoutes(){
 		$app = $this;
 		$this->get('/', function() use ($app){
@@ -95,6 +107,10 @@ class OpenBible extends Application{
 		});
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	private function initDb(){
 		$this->register(new Provider\DoctrineServiceProvider(), array(
 				'dbs.options' => array (
@@ -104,6 +120,10 @@ class OpenBible extends Application{
 		));
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	private function initTemplating(){
 		$this->register(new Provider\TwigServiceProvider(), array(
 			'twig.path' => __DIR__.'/../views',

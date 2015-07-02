@@ -19,6 +19,10 @@ class Book{
 		$this->Bible = $bible ? $bible : new Bible($app);
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function LoadSections($book,$chapter){
 		$query = "SELECT COUNT(*)
 			FROM information_schema.tables 
@@ -48,6 +52,10 @@ class Book{
 		return null;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function LoadChapter($number, $verses = true){
 		if($number > $this->ChapterCount){
 			return false;
@@ -75,6 +83,10 @@ class Book{
 		}
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function AddVerse($rawv){
 		$verse = new Verse($this->app);
 		$verse->Id = $rawv['id'];
@@ -91,6 +103,10 @@ class Book{
 		}
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function CountChapters(){
 		$this->ChapterCount = $this->app['db']->fetchColumn("SELECT MAX(c) FROM t_hsv WHERE b=".$this->Id);
 	}

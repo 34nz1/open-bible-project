@@ -10,6 +10,10 @@ class SearchParser{
 		$this->query = $query;
 	}
 	
+	/**
+	 * TODO: Function Description
+	 * @param Var Description
+	 */
 	public function parse($query = null){
 		if($query == null){
 			$query = $this->query;
