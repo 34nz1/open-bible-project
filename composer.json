@@ -1,0 +1,16 @@
+{
+    "require": {
+        "silex/silex": "~1.2",
+        "doctrine/dbal": "~2.5",
+        "twig/twig": "~1.18",
+        "symfony/twig-bridge": "~2.6",
+        "jasongrimes/silex-simpleuser": "~2.0"
+    },
+	"autoload": {
+		"psr-4": {
+			"OpenBible\\": "src/",
+			"OpenBible\\Controllers\\": "src/Controllers",	
+			"OpenBible\\Models\\": "src/Models"			
+		}
+	}
+}

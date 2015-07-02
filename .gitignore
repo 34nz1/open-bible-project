@@ -1,2 +1,5 @@
 Rakefile
 src/DBConfig.php
+.buildpath
+.project
+.settings/
