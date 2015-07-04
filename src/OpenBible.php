@@ -5,7 +5,7 @@ use Silex\Application;
 use OpenBible\Controllers\BibleController;
 use Silex\Provider;
 
-require 'DBConfig.php';
+require 'DBConfig.php';  
 
 class OpenBible extends Application{
 	
